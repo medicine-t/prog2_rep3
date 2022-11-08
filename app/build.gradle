@@ -11,6 +11,9 @@ plugins {
     id 'application'
 }
 
+
+sourceCompatibility = 10
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -32,4 +35,10 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes  "Main-Class": "Main"
+    }
 }
