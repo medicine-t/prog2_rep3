@@ -19,14 +19,11 @@
 </div>
 
 #### ステップ1: コードの準備
-prog2全体として以前からgithubで管理していたため、report3単体のリポジトリは作成していません。
-サブディレクトリのリンクが以下のものです
-https://github.com/medicine-t/prog2_2022/tree/main/Task/report3
-備考として、リポジトリのURLが以下の通りです
-https://github.com/medicine-t/prog2_2022
+リポジトリは以下の場所です
+https://github.com/medicine-t/prog2_rep3
 
 #### ステップ2: 死亡した後で攻撃できてしまう件をどうにかしたい
-
+enemyが死亡しているのに攻撃できてしまうことについては、Enemyの持つdead:booleanのフラグを確認すれば良い。そのため、if文を通して生死判定を行うようにした。
 ```bash
 $ git log -p -1
 commit 1e5b2fd153897bba98810d726ded7ef5a4b07503
