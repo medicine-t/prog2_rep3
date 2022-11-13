@@ -13,14 +13,14 @@
 </script>
 
 <div style="text-align: right;">
-編集日:2022-XX-XX<br>
+編集日:2022-11-13<br>
 報告者:e225717 高嶺拓矢<br>  
 協力者:なし
 </div>
 
 #### ステップ1: コードの準備
 リポジトリは以下の場所です
-https://github.com/medicine-t/prog2_rep3
+[https://github.com/medicine-t/prog2_rep3]()
 
 #### ステップ2: 死亡した後で攻撃できてしまう件をどうにかしたい
 enemyが死亡しているのに攻撃できてしまうことについては、Enemyの持つdead:booleanのフラグを確認すれば良い。そのため、if文を通して生死判定を行うようにした。
