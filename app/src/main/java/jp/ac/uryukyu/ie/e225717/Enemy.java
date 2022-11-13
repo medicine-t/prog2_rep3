@@ -57,34 +57,74 @@ public class Enemy {
         }
     }
 
+    /**
+     * インスタンスの持つname変数をStringとして返す。
+     * 
+     * @return name:String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * インスタンスの持つHitPointをintとして返す
+     * 
+     * @return hitPoint:int
+     */
     public int getHitPoint() {
         return hitPoint;
     }
 
+    /**
+     * インスタンスの持つattackをintとして返す
+     * 
+     * @return
+     */
     public int getAttack() {
         return attack;
     }
 
+    /**
+     * インスタンスの持つdeadフラグの状態をbooleanで返す
+     * 
+     * @return
+     */
     public boolean isDead() {
         return dead;
     }
 
+    /**
+     * インスタンスのname変数の値を設定する。
+     * 
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * インスタンスのhitPoint変数の値を設定する
+     * 
+     * @param hitPoint
+     */
     public void setHitPoint(int hitPoint) {
         this.hitPoint = hitPoint;
     }
 
+    /**
+     * インスタンスのattackの値を設定する
+     * 
+     * @param attack
+     */
     public void setAttack(int attack) {
         this.attack = attack;
     }
 
+    /**
+     * インスタンスのdeadフラグの状態を設定する
+     * 
+     * @param dead
+     */
     public void setDead(boolean dead) {
         this.dead = dead;
     }
