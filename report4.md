@@ -36,3 +36,47 @@ LivingThingに主要な機能をまとめたことで、HeroとEnemyの内容を
 
 
 
+#### ステップ2: Heroクラスの上位職を作ってみよう
+1. テストコード
+```java
+package jp.ac.uryukyu.ie.e225717;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class WarriorTest {
+
+    /**
+     * Warrior.attackWithWeaponSkillでの攻撃によるHP減少がattackの150%になっているかの確認
+     * 検証はWarriorの攻撃に十分な回数耐えることのできるEnemyを生成して行う。
+     * attackWithWeaponSkillの仕様から、与えるダメージはattack * 1.5 (== attack * 3 / 2)である
+     * Enemyの攻撃を受ける前後でのHPの減少分が先述の計算によるダメージと等しいことを期待する
+     */
+    @Test
+    void warriorWeaponTest() {
+        Warrior demoWarrior = new Warrior("デモ戦士", 100, 10);
+        Enemy slime = new Enemy("スライムもどき", 100, 0);
+        for (int index = 0; index < 3; index++) {
+            int estimatedDiff = demoWarrior.getAttack() * 3 / 2;
+            int beforeAttackHitPoint = slime.getHitPoint();
+            demoWarrior.attackWithWeponSkill(slime);
+            int afterAttackHitPoint = slime.getHitPoint();
+            assertEquals(estimatedDiff, beforeAttackHitPoint - afterAttackHitPoint);
+        }
+    }
+}
+```
+
+2. `gradle test`の結果
+``` bash
+gradle test --rerun-tasks
+
+BUILD SUCCESSFUL in 754ms
+3 actionable tasks: 3 executed
+```
+動作確認時の影響により`gradle test`ではすべてup-to-dateとなっており実行されなかったためオプション`--rerun-tasks`を利用して実際にテストを通過したことを示した。
+
+
+3. テストコードの解説　　
+Warriorの攻撃によるHPの減少分がWarrior.attackの150%(attack * 3 / 2)と等しいかどうかを検証する。少なくとも3回の攻撃をテスト中に行うため、Enemyの初期HPはこの攻撃に十分耐えることのできる値が望ましく、今回は100と設定した。  
+増減分の評価は、事前にWarriorから計算した値と、Enemyの被攻撃前後のHPの増減の値の比較によって行った。
