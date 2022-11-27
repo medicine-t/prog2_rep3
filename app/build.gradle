@@ -30,6 +30,7 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'Main'
+    //mainClass = 'Main2' //オプション用
 }
 
 tasks.named('test') {

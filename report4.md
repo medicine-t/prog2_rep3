@@ -1,5 +1,5 @@
 ## プログラミングⅡ 
-### 課題レポート3: リファクタリングを通してユニットテストとバージョン管理に慣れよう
+### 課題レポート4: リファクタリングを通して継承に慣れよう
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -13,7 +13,7 @@
 </script>
 
 <div style="text-align: right;">
-編集日:2022-11-XX<br>
+編集日:2022-11-27<br>
 報告者:e225717 高嶺拓矢<br>  
 協力者:なし
 </div>
@@ -80,3 +80,34 @@ BUILD SUCCESSFUL in 754ms
 3. テストコードの解説　　
 Warriorの攻撃によるHPの減少分がWarrior.attackの150%(attack * 3 / 2)と等しいかどうかを検証する。少なくとも3回の攻撃をテスト中に行うため、Enemyの初期HPはこの攻撃に十分耐えることのできる値が望ましく、今回は100と設定した。  
 増減分の評価は、事前にWarriorから計算した値と、Enemyの被攻撃前後のHPの増減の値の比較によって行った。
+
+#### オプション: サブクラスのオブジェクトをスーパークラス型に代入した場合？
+(1) できた  
+(2) できた
+(3) できなかった  
+```bash
+Task :app:compileJava FAILED
+/Users/takuya/prog/prog2_rep3/app/src/main/java/Main2.java:7: エラー: 不適合な型: HeroをWarriorに変換できません:
+        Warrior hero = new Hero("勇者", 10, 5); // (a)
+                       ^
+エラー1個
+
+FAILURE: Build failed with an exception.
+```
+(4) できなかった  
+```bash
+Task :app:compileJava FAILED
+/Users/takuya/prog/prog2_rep3/app/src/main/java/Main2.java:16: エラー: シンボルを見つけられません
+            hero.attackWithWeponSkill(enemy); // (b)
+                ^
+  シンボル:   メソッド attackWithWeponSkill(Enemy)
+  場所: タイプHeroの変数 hero
+エラー1個
+```
+これらの結果から、サブクラスのオブジェクトをスーパークラスに代入した場合は、スーパークラスの要素以外は無視されることがわかった。そのため、スーパークラスに代入したあとにサブクラスで新たに定義された値やメソッドを利用することはできないようだ。
+
+(5)以下が出力された
+```bash
+jp.ac.uryukyu.ie.e225717.Warrior@33909752
+```
+この結果は`System.out.println(Object x)`を呼び出したことで出力するものとして`String.valueOf(Object obj)`が呼ばれ、`obj`がnullでなかったため`Object.toString()`が呼ばれた結果、`getClass().getName() + '@' + Integer.toHexString(hashCode())`の結果が返されたためこの結果が出力された。
