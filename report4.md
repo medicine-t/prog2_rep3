@@ -83,7 +83,7 @@ Warriorの攻撃によるHPの減少分がWarrior.attackの150%(attack * 3 / 2)�
 
 #### オプション: サブクラスのオブジェクトをスーパークラス型に代入した場合？
 (1) できた  
-(2) できた
+(2) できた　　
 (3) できなかった  
 ```bash
 Task :app:compileJava FAILED
